@@ -1,0 +1,66 @@
+header {
+  position: fixed;
+  z-index: $z-index-header;
+  top: 0.5vmax;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+
+    nav {
+      a {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  nav {
+    display: flex;
+    gap: 1vmax;
+
+    a {
+      position: relative;
+      padding: 0.5vmax;
+      opacity: 0;
+      transform: translateY(-$height-header);
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: $unit * 0.25;
+        opacity: 0;
+        transform: translateY($unit);
+        background-color: white;
+        transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+      }
+
+      &:hover {
+        color: white;
+
+        &::after {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          $transition-options: 0.2s ease-out map($i, 1, 4, $time-change-section, $time-change-section + 0.2s);
+          transition: transform $transition-options, opacity 0.2s ease-out, color 0.2s ease-out;
+        }
+      }
+    }
+  }
+}

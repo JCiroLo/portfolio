@@ -1,0 +1,8 @@
+aside(:class="{show}")
+  nav
+    router-link(:to="{name: 'home', hash: '#home'}" @click="$emit('route', 'home')") Home
+    router-link(:to="{name: 'home', hash: '#about'}" @click="$emit('route', 'about')") About
+    router-link(:to="{name: 'home', hash: '#skills'}" @click="$emit('route', 'skills')") Skills
+    router-link(:to="{name: 'home', hash: '#portfolio'}" @click="$emit('route', 'portfolio')") Portfolio
+    router-link(:to="{name: 'home', hash: '#contact'}" @click="$emit('route', 'contact')") Contact
+    .pointer(:style="{top: `${pointerPosition * 2}vmax`}")

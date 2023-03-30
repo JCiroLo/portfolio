@@ -1,0 +1,6 @@
+header(:class="{show}")
+  nav
+    router-link(:to="{name: 'home', hash: '#about'}" :class="{active: isRouteActive('#about')}" @click="$emit('route', 'about')") About
+    router-link(:to="{name: 'home', hash: '#skills'}" :class="{active: isRouteActive('#skills')}" @click="$emit('route', 'skills')") Skills
+    router-link(:to="{name: 'home', hash: '#portfolio'}" :class="{active: isRouteActive('#portfolio')}" @click="$emit('route', 'portfolio')") Portfolio
+    router-link(:to="{name: 'home', hash: '#contact'}" :class="{active: isRouteActive('#contact')}" @click="$emit('route', 'contact')") Contact

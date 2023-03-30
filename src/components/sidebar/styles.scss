@@ -1,0 +1,60 @@
+aside {
+  position: fixed;
+  z-index: $z-index-header;
+  top: 50%;
+  right: 0.5vmax;
+  opacity: 0;
+  transform: translate(100%, -50%);
+  transition: opacity 0.2s ease-out $time-change-section, transform 0.2s ease-out $time-change-section;
+
+  &.show {
+    opacity: 1;
+    transform: translate(0, -50%);
+
+    nav {
+      a {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  nav {
+    position: relative;
+    display: flex;
+    padding-right: 0.5vmax;
+    flex-direction: column;
+    border-right: 1px solid rgba(white, 0.25);
+    text-align: end;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 2vmax;
+      padding-right: 0.5vmax;
+      opacity: 0;
+      transform: translateX(100%);
+
+      &:hover {
+        color: white;
+      }
+
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          $transition-options: 0.2s ease-out map($i, 1, 4, $time-change-section, $time-change-section + 0.2s);
+          transition: transform $transition-options, opacity 0.2s ease-out, color 0.2s ease-out;
+        }
+      }
+    }
+
+    .pointer {
+      position: absolute;
+      right: 0;
+      height: 2vmax;
+      width: 0.1vmax;
+      background-color: white;
+      transition: top 0.2s ease-out;
+    }
+  }
+}

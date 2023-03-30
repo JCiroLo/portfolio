@@ -1,0 +1,15 @@
+.image-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5vmax;
+
+  img {
+  }
+
+  p {
+    text-align: center  ;
+    font-size: 0.75vmax;
+    font-weight: 600;
+  }
+}
