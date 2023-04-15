@@ -13,11 +13,11 @@ export default {
     return {
       options: {
         licenseKey: 'gplv3-license',
-        scrollingSpeed: 1000,
+        scrollingSpeed: 750,
         scrollOverflow: 'fp-noscroll',
         anchors: ['home', 'about', 'skills', 'portfolio', 'contact'],
         slidesNavigation: true,
-        controlArrows: false,
+        controlArrows: true,
         credits: { enabled: false },
         beforeLeave: this.onChangeSection,
         onSlideLeave: this.onChangeSlide
@@ -32,9 +32,21 @@ export default {
       currentSlide: 0
     }
   },
+  computed: {
+    showSidebar () {
+      return this.currentSection !== 'home' && this.currentSlide === 0
+    },
+    showSlideArrows () {
+      return this.currentSlide > 0
+    }
+  },
   methods: {
     onChangeSection (from, to, direction) {
       this.currentSection = to.anchor
+
+      if (this.currentSlide > 0) {
+        this.$refs.fullpage.api.moveTo('portfolio', 0)
+      }
 
       if (to.anchor === 'about') {
         this.settings.about.interestsAnimation = setInterval(() => {

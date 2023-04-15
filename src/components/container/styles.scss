@@ -1,20 +1,20 @@
 @media (max-width: $break_point_lg) {
   .container-component {
-    width: 90vmax;
+    width: 90vw;
     margin: 0 auto;
   }
 }
 
 @media (min-width: $break_point_lg) and (max-width: $break_point_xl) {
   .container-component {
-    width: 80vmax;
+    width: 80vw;
     margin: 0 auto;
   }
 }
 
 @media (min-width: $break_point_xl) {
   .container-component {
-    width: 75vmax;
+    width: 75vw;
     margin: 0 auto;
   }
 }

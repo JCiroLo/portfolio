@@ -1,97 +1,223 @@
+import * as THREE from 'three'
+
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
+import { CinematicCamera } from 'three/addons/cameras/CinematicCamera.js'
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
+
 export default {
   name: 'v-canvas',
+  props: {
+    render: Boolean
+  },
   data () {
     return {
-      time: 0,
-      velocity: 0.1,
-      velocityTarget: 0.005,
-      width: 0,
-      height: 0,
-      lastX: 0,
-      lastY: 0,
-      MAX_OFFSET: 300,
-      SPACING: 6,
-      POINTS_PER_LAP: 4,
-      SHADOW_STRENGTH: 120
-    }
-  },
-  computed: {
-    POINTS () {
-      return this.MAX_OFFSET / this.SPACING
-    },
-    PEAK () {
-      return this.MAX_OFFSET * 0.25
-    }
-  },
-  methods: {
-    setup (canvas, context) {
-      this.resize(canvas)
-      this.step(context)
-    },
-    render (context) {
-      let x = 0
-      let y = 0
-      const cx = this.width / 2
-      const cy = this.height / 2
-
-      // context.globalCompositeOperation = 'lighter'
-      context.strokeStyle = '#fff'
-      context.shadowColor = '#fff'
-      context.lineWidth = 2
-      context.beginPath()
-
-      for (let i = this.POINTS; i > 0; i--) {
-        const value = i * this.SPACING + (this.time % this.SPACING)
-
-        const ax = Math.sin(value / this.POINTS_PER_LAP) * Math.PI
-        const ay = Math.cos(value / this.POINTS_PER_LAP) * Math.PI
-
-        x = ax * value
-        y = ay * value * 0.9
-
-        const o = 1 - Math.min(value, this.PEAK) / this.PEAK
-
-        y -= Math.pow(o, 2) * 200
-        y += (200 * value) / this.MAX_OFFSET
-        y += (x / cx) * this.width * 0
-
-        context.globalAlpha = 1 - value / this.MAX_OFFSET
-        context.shadowBlur = this.SHADOW_STRENGTH * o
-
-        context.lineTo(cx + x, cy + y)
-        context.stroke()
-
-        context.beginPath()
-        context.moveTo(cx + x, cy + y)
+      config: {
+        camera: {
+          theta: 0,
+          velocity: 0.1,
+          radius: 15,
+          focalLength: 6
+        },
+        lights: {
+          theta: 0,
+          velocity: 0.5,
+          radius: 100,
+          intensity: 1
+        },
+        bloomPass: {
+          strength: 1,
+          threshold: 0.05,
+          radius: 1
+        },
+        innerPlanet: {
+          thetaX: 0,
+          thetaY: 0.001,
+          thetaZ: 0
+        },
+        outerPlanet: {
+          thetaX: 0,
+          thetaY: 0.005,
+          thetaZ: 0.001
+        }
       }
-
-      context.lineTo(cx, cy - 200)
-      context.lineTo(cx, 0)
-      context.stroke()
+    }
+  },
+  computed: {},
+  methods: {
+    _createRenderer () {
+      this.renderer = new THREE.WebGLRenderer({ antialias: true })
+      this.renderer.setPixelRatio(window.devicePixelRatio)
+      this.renderer.setSize(window.innerWidth, window.innerHeight)
+      this.renderer.shadowMap.enabled = true
+      this.$refs.container.appendChild(this.renderer.domElement)
     },
-    resize (canvas) {
-      this.width = canvas.width = window.innerWidth
-      this.height = canvas.height = window.innerHeight
+    _createScene () {
+      this.scene = new THREE.Scene()
     },
-    step (context) {
-      this.time += this.velocity
-      this.velocity += (this.velocityTarget - this.velocity) * 0.3
+    _createCamera () {
+      this.camera = new CinematicCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        1,
+        2000
+      )
+      this.camera.setLens(this.config.camera.focalLength)
+      this.camera.position.set(0, 5, -200)
+    },
+    _createLights () {
+      this.pointLight1 = new THREE.PointLight(
+        'white',
+        this.config.lights.intensity
+      )
+      this.scene.add(this.pointLight1)
 
-      this.clear(context)
-      this.render(context)
+      this.pointLight2 = new THREE.PointLight(
+        'white',
+        this.config.lights.intensity
+      )
+      this.scene.add(this.pointLight2)
+    },
+    _createPostEffects () {
+      this.renderScene = new RenderPass(this.scene, this.camera)
 
-      requestAnimationFrame(() => {
-        this.step(context)
+      this.bloomPass = new UnrealBloomPass(
+        new THREE.Vector2(window.innerWidth, window.innerHeight),
+        this.config.bloomPass.strength,
+        this.config.bloomPass.radius,
+        this.config.bloomPass.threshold
+      )
+
+      this.composer = new EffectComposer(this.renderer)
+      this.composer.addPass(this.renderScene)
+      this.composer.addPass(this.bloomPass)
+    },
+    _createScenario () {
+      // Inner planet
+      this.innerPlanetObject = new THREE.Object3D()
+
+      this.scene.add(this.innerPlanetObject)
+
+      const innerPlanetGeometry = new THREE.IcosahedronGeometry(10, 1)
+
+      const innerPlanetMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x222222,
+        metalness: 1,
+        roughness: 0.5,
+        side: THREE.DoubleSide,
+        flatShading: true
       })
+
+      const innerPlanetMesh = new THREE.Mesh(
+        innerPlanetGeometry,
+        innerPlanetMaterial
+      )
+
+      this.innerPlanetObject.add(innerPlanetMesh)
+
+      // Outer planet
+
+      this.outerPlanetObject = new THREE.Object3D()
+
+      this.scene.add(this.outerPlanetObject)
+
+      const outerPlanetGeometry = new THREE.IcosahedronGeometry(30, 2)
+
+      const outerPlanetMaterial = new THREE.MeshLambertMaterial({
+        color: 0xaaaaaa,
+        metalness: 1,
+        roughness: 0,
+        wireframe: true
+      })
+
+      this.outerPlanetMesh = new THREE.Mesh(
+        outerPlanetGeometry,
+        outerPlanetMaterial
+      )
+
+      this.outerPlanetObject.add(this.outerPlanetMesh)
     },
-    clear (context) {
-      context.clearRect(0, 0, this.width, this.height)
+    _animateCamera () {
+      this.camera.position.set(
+        this.config.camera.radius *
+          Math.sin(THREE.MathUtils.degToRad(this.config.camera.theta)),
+        this.config.camera.radius *
+          Math.sin(THREE.MathUtils.degToRad(this.config.camera.theta)),
+        this.config.camera.radius *
+          Math.cos(THREE.MathUtils.degToRad(this.config.camera.theta))
+      )
+      this.camera.lookAt(this.scene.position)
+      this.camera.setLens(
+        4 * Math.sin(THREE.MathUtils.degToRad(this.config.camera.theta)) + 6
+      )
+      this.camera.updateMatrixWorld()
+    },
+    _animateScenario () {
+      this.innerPlanetObject.rotation.x += this.config.innerPlanet.thetaX
+      this.innerPlanetObject.rotation.y += this.config.innerPlanet.thetaY
+      this.innerPlanetObject.rotation.z += this.config.innerPlanet.thetaZ
+
+      this.outerPlanetObject.rotation.x += this.config.outerPlanet.thetaX
+      this.outerPlanetObject.rotation.y += this.config.outerPlanet.thetaY
+      this.outerPlanetObject.rotation.z += this.config.outerPlanet.thetaZ
+    },
+    /**
+     * [Animate a point light]
+     * @param {THREE.PointLight} pointLight - THREE Point Light
+     * @param {Number} direction - THREE Point Light direction
+     * */
+    _animatePointLight (pointLight, direction) {
+      pointLight.position.set(
+        this.config.lights.radius *
+          direction *
+          Math.sin(THREE.MathUtils.degToRad(this.config.lights.theta)),
+        this.config.lights.radius *
+          direction *
+          Math.sin(THREE.MathUtils.degToRad(this.config.lights.theta)),
+        this.config.lights.radius *
+          direction *
+          Math.cos(THREE.MathUtils.degToRad(this.config.lights.theta))
+      )
+    },
+    _onWindowResize () {
+      const width = window.innerWidth
+      const height = window.innerHeight
+
+      this.camera.aspect = width / height
+      this.camera.updateProjectionMatrix()
+
+      this.renderer.setSize(width, height)
+      this.composer.setSize(width, height)
+    },
+    animate () {
+      this.config.camera.theta += this.config.camera.velocity
+      this.config.lights.theta += this.config.lights.velocity
+
+      this._animateCamera()
+      this._animateScenario()
+      this._animatePointLight(this.pointLight1, 1)
+      this._animatePointLight(this.pointLight2, -1)
+
+      this.composer.render()
+    },
+    init () {
+      this._createRenderer()
+      this._createScene()
+      this._createCamera()
+      this._createLights()
+      this._createPostEffects()
+      this._createScenario()
+
+      this.renderer.setAnimationLoop(() => {
+        if (this.render) {
+          this.animate()
+        }
+      })
     }
   },
   mounted () {
-    const canvas = this.$refs.canvas
-    const context = canvas.getContext('2d')
+    this.init()
 
-    this.setup(canvas, context)
+    window.addEventListener('resize', () => this._onWindowResize())
   }
 }

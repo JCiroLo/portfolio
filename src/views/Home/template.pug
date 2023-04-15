@@ -1,9 +1,9 @@
-.page-portfolio
+.page-portfolio(:class="{'show-slide-arrows': showSlideArrows }")
   v-header(:show="currentSection === 'home'" @route="onChangeRoute")
-  v-sidebar(:show="currentSection !== 'home'" @route="onChangeRoute")
+  v-sidebar(:show="showSidebar" @route="onChangeRoute")
   .background-content
     .overlay-home(:class="{active: currentSection === 'home'}")
-      v-canvas(:show="currentSection === 'home'")
+      v-canvas(:render="currentSection === 'home'")
     .overlay-about(:class="{'active': currentSection === 'about'}")
       img(:src="useImage('shape-3.png')" alt="shape")
       img(:src="useImage('shape-7.png')" alt="shape")
@@ -29,7 +29,8 @@
           v-icon.key(name="arrow-left")
           v-icon.key(name="arrow-down")
           v-icon.key(name="arrow-right")
-        small You can move with keyboard keys.
+        small You can navigate with keyboard keys.
+
     .section.section-about
       v-container
         section
@@ -38,19 +39,19 @@
           img(:src="useImage('profile.jpg')" alt="")
         section
           .interests
-            .interest(:class="{active: settings.about.currentInterest === 0}"): p I am passionate about programming, especially on web development.
-            .interest(:class="{active: settings.about.currentInterest === 1}"): p I am open to challenges and enjoy facing them with dedication and responsibility.
+            .interest(:class="{active: settings.about.currentInterest === 0}"): p I'm passionate about programming, especially on web development.
+            .interest(:class="{active: settings.about.currentInterest === 1}"): p I'm open to challenges and enjoy facing them with dedication and responsibility.
             .interest(:class="{active: settings.about.currentInterest === 2}"): p I like teamwork, sharing ideas, listening to others and building great projects.
             .interest(:class="{active: settings.about.currentInterest === 3}"): p I consider myself capable of leading, with great imagination and creativity in solving challenges.
-            .interest(:class="{active: settings.about.currentInterest === 4}"): p And i also know how to play guitar, that is cool :)
+            .interest(:class="{active: settings.about.currentInterest === 4}"): p And I also know how to play guitar, that's cool :)
 
     .section.section-skills
       v-container
         section
           h2 Skills & Experience
-          p I have gained experience building personal projects for training and creativity, building various projects to fit different aspects of the client's business, doing maintenance and refactoring code in real web applications, customer assistance, hosting and domain managment, requirements elicitation, building web apps, small unity games, mobile apps, custom plugins, components, features, animations and coding interactive layouts.
+          p I have gained experience building personal projects for training and creativity, building various projects to fit different aspects of the client's business, doing maintenance and refactoring code in real web applications, customer assistance, hosting and domain management, requirements elicitation, building web apps, small unity games, mobile apps, custom plugins, components, features, animations and coding interactive layouts.
           p My main area of expertise is front end development using many technologies such as HTML, CSS, JS, Vue, React and typescript, but I also have experience in WordPress and PHP.
-          p In back end development i have experience building REST APIs using Node, Express and Moleculer, i also have knowledge using microservices architecture and DevOps philosophy.
+          p In back end development I have experience building REST APIs using Node, Express and Moleculer, I also have knowledge using microservices architecture and DevOps philosophy.
           .front-end
             .technologies
               v-image(src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="logo_html" description="HTML")
@@ -85,14 +86,23 @@
         v-container
           section
             .site-info
-              small Investment Platform
+              small Freelance Job
               h2 Getapig!
-              p It is an investment fund focused on financing projects in the pork industry.
+              .summary
+                p It is an investment platform focused on financing projects in the pork industry.
+                p • Development of the entire site from mockups.
+                p • Component creation using a UI/UX design system.
+                p • Full responsive design.
+                p • Development of the server with token-based authentication using JWT and microservices architecture.
+                p • Integration with an own developed administration panel to manage the site contents.
+                p • Deployment and setup of domains and subdomains in the hosting panel.
+                p • Integration with ChartJS to show real-time analytics.
               .technologies
                 p Built with:
                 v-image(src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="logo_vue" description="Vue")
                 v-image(src="https://cdn.worldvectorlogo.com/logos/pug.svg" alt="logo_pug" description="Pug")
                 v-image(src="https://cdn.worldvectorlogo.com/logos/sass-1.svg" alt="logo_pug" description="Sass")
+                v-image(src="https://scicoding.com/content/images/2021/09/chartjs-logo-1.svg" alt="logo_chartjs" description="ChartJs")
                 v-image(src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="logo_node" description="Node")
                 v-image(src="https://raw.githubusercontent.com/moleculerjs/branding/master/logo/logo.png" alt="logo_moleculer" description="Moleculer")
               .actions
@@ -103,9 +113,13 @@
         v-container
           section
             .site-info
-              small Mobile Car Wash
-              h2 Cupidowash
-              p It is an application to easily schedule car wash service at home.
+              small Freelance Job
+              h2 Cupido Car Wash
+              .summary
+                p It is an application to easily schedule car wash service at home.
+                p • Development of the entire site from zero using demo templates.
+                p • Component creation using a UI/UX design system.
+                p • Integration with Calendly to automate appointment scheduling.
               .technologies
                 p Built with:
                 v-image(src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="logo_vue" description="Vue")
@@ -122,7 +136,8 @@
             .site-info
               small Personal Project
               h2 Drum Machine
-              p Create progressions with different sounds on a retro-designed radio tape recorder.
+              .summary
+                p Create progressions with different sounds on a retro-designed radio tape recorder.
               .technologies
                 p Built with:
                 v-image(src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="logo_vue" description="Vue")
@@ -141,7 +156,8 @@
             .site-info
               small Personal Project
               h2 Fractal Canopy
-              p Simulator to generate custom fractal trees with many parameters.
+              .summary
+                p Simulator to generate custom fractal trees with many parameters.
               .technologies
                 p Built with:
                 v-image(src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="logo_vue" description="Vue")
@@ -159,7 +175,8 @@
             .site-info
               small Personal Project
               h2 Snake Game
-              p The classic game made in HTML with some features.
+              .summary
+                p The classic game made in pure HTML, Javascript and CSS with multiple difficulties.
               .technologies
                 p Built with:
                 v-image(src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="logo_vue" description="Vue")
@@ -177,7 +194,8 @@
             .site-info
               small Personal Project
               h2 Camera Effects
-              p Small application that uses the camera to create animated shapes.
+              .summary
+                p Small application that uses the camera to create animated shapes.
               .technologies
                 p Built with:
                 v-image(src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="logo_html" description="HTML")
@@ -194,7 +212,8 @@
             .site-info
               small Personal Project
               h2 LOLRE
-              p League of Legends champion search engine that allows you to see all their history, skins and abilities in detail and in different languages. Use the official Riot Games API.
+              .summary
+                p League of Legends champion search engine that allows you to see all their history, skins and abilities in detail and in different languages. Uses the official Riot Games API.
               .technologies
                 p Built with:
                 v-image(src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="logo_vue" description="Vue")
@@ -211,7 +230,8 @@
             .site-info
               small Personal Project
               h2 Musical Scale Finder
-              p Application created to find musical scales that match the notes you previously selected. The site is under construction.
+              .summary
+                p Application created to find musical scales that match the notes you previously selected. The site is under construction.
               .technologies
                 p Built with:
                 v-image(src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="logo_vue" description="Vue")
@@ -227,13 +247,31 @@
         v-container
           section
             .site-info
+              small Personal Project
+              h2 Disco Planet
+              .summary
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad unde molestiae modi officiis blanditiis odit, quos atque aliquid consequuntur odio ab beatae similique cupiditate laborum aliquam, rerum corrupti. Molestias, quod?.
+              .technologies
+                p Built with:
+                v-image(src="https://cdn.worldvectorlogo.com/logos/html-1.svg" alt="logo_html" description="HTML")
+                v-image(src="https://cdn.worldvectorlogo.com/logos/logo-javascript.svg" alt="logo_js" description="JavaScript")
+                v-image(src="https://cdn.worldvectorlogo.com/logos/threejs-1.svg" alt="logo_threejs" description="ThreeJs")
+              .actions
+                a(href="https://jcirolo.github.io/disco-planet/" target="_blank") Explore the site
+                a(href="https://github.com/JCiroLo/disco-planet" target="_blank") View the code
+            .site-preview
+              img(:src="useImage('mockup-discoplanet.png')" alt="")
+      .slide.slide-web-app
+        v-container
+          section
+            .site-info
               small E-Commerce Application
               h2 Glasses Frame Shop
               p Personal project made to emulate an online store to sell and test glasses frames. The site is under construction.
               .technologies
                 p Built with:
                 v-image(src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="logo_react" description="React")
-                img(src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="logo_ts" description="TypeScript")
+                v-image(src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="logo_ts" description="TypeScript")
                 v-image(src="https://cdn.worldvectorlogo.com/logos/sass-1.svg" alt="logo_pug" description="Sass")
                 v-image(src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="logo_node" description="Node")
               .actions
@@ -246,7 +284,7 @@
         section
           small Want to start new project?
           h2 Contact Me
-          p Available for any freelance opportunity. Send me an email or contact me via instant message!
+          p Available for any remote freelance opportunity. Send me an email or contact me via instant message!
           .social-networks
             a(href="mailto: juanciro35@gmail.com" target="_blank")
               v-icon(type="far" name="envelope")

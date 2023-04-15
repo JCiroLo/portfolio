@@ -58,3 +58,9 @@ aside {
     }
   }
 }
+
+@media (max-width: $break_point_md) {
+  aside{
+    display: none;
+  }
+}
