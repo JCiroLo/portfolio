@@ -1,0 +1,44 @@
+.fullpage-wrapper {
+  .fp-slidesNav {
+    ul {
+      display: flex;
+      justify-content: center;
+
+      li {
+        a {
+          &.active {
+            span {
+              background: white;
+            }
+          }
+
+          span {
+            background: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+    }
+  }
+
+  section[data-section="contact"] {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background-image: url("https://www.liberatedyoga.com/img/010.jpg");
+      background-size: cover;
+      transition: opacity 0.25s ease;
+      transform: rotate(180deg);
+    }
+
+    &.active {
+      &::before {
+        opacity: 1;
+        transition: opacity 0.25s ease 0.5s;
+      }
+    }
+  }
+}
