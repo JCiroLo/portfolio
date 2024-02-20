@@ -2,7 +2,6 @@ export { default as CameraRig } from './CameraRig';
 export { default as Fullpage } from './Fullpage';
 export * from './Icons';
 export { default as Image } from './Image';
-export { default as Lights } from './Lights';
 export { default as Loader } from './Loader';
 export { default as ObjectIpad } from './ObjectIpad';
 export { default as ObjectPixelWorld } from './ObjectPixelWorld';
