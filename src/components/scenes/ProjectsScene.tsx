@@ -19,7 +19,7 @@ const Projects: FC<ProjectsProps> = (props) => {
   const presetTexture = useEnvironment({ preset: "sunset" });
 
   const ipadRef = useRef<Group>(null!);
-  const cubesRef = useRef<Group>(null!);
+  // const cubesRef = useRef<Group>(null!);
   // const roundedBox1 = useRef<Mesh>(null!);
   // const roundedBox2 = useRef<Mesh>(null!);
   // const roundedBox3 = useRef<Mesh>(null!);

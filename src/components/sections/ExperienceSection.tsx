@@ -1,5 +1,5 @@
 import { Section, Slide, SquareRoundedCheckIcon } from "..";
-import { Container, List, ListItem, ListItemIcon, ListItemText, Stack, Typography } from "@mui/material";
+import { Container, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import contents from "../../contents";
 
 const ExperienceSection = () => {
