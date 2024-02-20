@@ -1,149 +1,149 @@
 import { GithubIcon, InstagramIcon, LinkedInIcon, MailIcon } from "../components";
-import { SECTIONS } from "../utilities/constants";
+import { PUBLIC_PATH, SECTIONS } from "../utilities/constants";
 
 const PROJECT_IMAGES = {
-  artfcl: "/img/projects/artfcl.jpg",
-  avovite: "/img/projects/avovite.jpg",
-  bitnapse: "/img/projects/bitnapse.jpg",
-  cameraeffects: "/img/projects/cameraeffects.jpg",
-  cupidocarwash: "/img/projects/cupidocarwash.jpg",
-  discoplanet: "/img/projects/discoplanet.jpg",
-  doogma: "/img/projects/doogma.jpg",
-  drummachine: "/img/projects/drummachine.jpg",
-  finalflows: "/img/projects/finalflows.jpg",
-  financity: "/img/projects/financity.jpg",
-  fractalcanopy: "/img/projects/fractalcanopy.jpg",
-  getapig: "/img/projects/getapig.jpg",
-  lolre: "/img/projects/lolre.jpg",
-  minaslaaurora: "/img/projects/minaslaaurora.jpg",
-  mitox: "/img/projects/mitox.jpg",
-  musicalscalefinder: "/img/projects/musicalscalefinder.jpg",
-  porimpacto: "/img/projects/porimpacto.jpg",
-  snakegame: "/img/projects/snakegame.jpg",
-  tradesforce: "/img/projects/tradesforce.jpg",
-  validocus: "/img/projects/validocus.jpg",
+  artfcl: `${PUBLIC_PATH}/img/projects/artfcl.jpg`,
+  avovite: `${PUBLIC_PATH}/img/projects/avovite.jpg`,
+  bitnapse: `${PUBLIC_PATH}/img/projects/bitnapse.jpg`,
+  cameraeffects: `${PUBLIC_PATH}/img/projects/cameraeffects.jpg`,
+  cupidocarwash: `${PUBLIC_PATH}/img/projects/cupidocarwash.jpg`,
+  discoplanet: `${PUBLIC_PATH}/img/projects/discoplanet.jpg`,
+  doogma: `${PUBLIC_PATH}/img/projects/doogma.jpg`,
+  drummachine: `${PUBLIC_PATH}/img/projects/drummachine.jpg`,
+  finalflows: `${PUBLIC_PATH}/img/projects/finalflows.jpg`,
+  financity: `${PUBLIC_PATH}/img/projects/financity.jpg`,
+  fractalcanopy: `${PUBLIC_PATH}/img/projects/fractalcanopy.jpg`,
+  getapig: `${PUBLIC_PATH}/img/projects/getapig.jpg`,
+  lolre: `${PUBLIC_PATH}/img/projects/lolre.jpg`,
+  minaslaaurora: `${PUBLIC_PATH}/img/projects/minaslaaurora.jpg`,
+  mitox: `${PUBLIC_PATH}/img/projects/mitox.jpg`,
+  musicalscalefinder: `${PUBLIC_PATH}/img/projects/musicalscalefinder.jpg`,
+  porimpacto: `${PUBLIC_PATH}/img/projects/porimpacto.jpg`,
+  snakegame: `${PUBLIC_PATH}/img/projects/snakegame.jpg`,
+  tradesforce: `${PUBLIC_PATH}/img/projects/tradesforce.jpg`,
+  validocus: `${PUBLIC_PATH}/img/projects/validocus.jpg`,
 };
 
 const LOGO_IMAGES = {
   amplify: {
     name: "AWS Amplify",
-    svg: "/img/logos/amplify.svg",
+    svg: `${PUBLIC_PATH}/img/logos/amplify.svg`,
   },
   calendly: {
     name: "Calendly",
-    svg: "/img/logos/calendly.svg",
+    svg: `${PUBLIC_PATH}/img/logos/calendly.svg`,
   },
   chartjs: {
     name: "Chart.js",
-    svg: "/img/logos/chartjs.svg",
+    svg: `${PUBLIC_PATH}/img/logos/chartjs.svg`,
   },
   css: {
     name: "CSS",
-    svg: "/img/logos/css.svg",
+    svg: `${PUBLIC_PATH}/img/logos/css.svg`,
   },
   dynamodb: {
     name: "AWS DynamoDB",
-    svg: "/img/logos/dynamodb.svg",
+    svg: `${PUBLIC_PATH}/img/logos/dynamodb.svg`,
   },
   epayco: {
     name: "Epayco SDK",
-    svg: "/img/logos/epayco.svg",
+    svg: `${PUBLIC_PATH}/img/logos/epayco.svg`,
   },
   expo: {
     name: "Expo",
-    svg: "/img/logos/expo.svg",
+    svg: `${PUBLIC_PATH}/img/logos/expo.svg`,
   },
   firebase: {
     name: "Firebase",
-    svg: "/img/logos/firebase.svg",
+    svg: `${PUBLIC_PATH}/img/logos/firebase.svg`,
   },
   flutter: {
     name: "Flutter",
-    svg: "/img/logos/flutter.svg",
+    svg: `${PUBLIC_PATH}/img/logos/flutter.svg`,
   },
   gpt: {
     name: "GPT 3.5",
-    svg: "/img/logos/gpt.svg",
+    svg: `${PUBLIC_PATH}/img/logos/gpt.svg`,
   },
   graphql: {
     name: "GraphQL",
-    svg: "/img/logos/graphql.svg",
+    svg: `${PUBLIC_PATH}/img/logos/graphql.svg`,
   },
   html5: {
     name: "HTML5",
-    svg: "/img/logos/html5.svg",
+    svg: `${PUBLIC_PATH}/img/logos/html5.svg`,
   },
   javascript: {
     name: "JavaScript",
-    svg: "/img/logos/javascript.svg",
+    svg: `${PUBLIC_PATH}/img/logos/javascript.svg`,
   },
   jquery: {
     name: "jQuery",
-    svg: "/img/logos/jquery.svg",
+    svg: `${PUBLIC_PATH}/img/logos/jquery.svg`,
   },
   materialui: {
     name: "Material UI",
-    svg: "/img/logos/materialui.svg",
+    svg: `${PUBLIC_PATH}/img/logos/materialui.svg`,
   },
   moleculerjs: {
     name: "Moleculer.js",
-    svg: "/img/logos/moleculerjs.svg",
+    svg: `${PUBLIC_PATH}/img/logos/moleculerjs.svg`,
   },
   nextjs: {
     name: "Next.js",
-    svg: "/img/logos/nextjs.svg",
+    svg: `${PUBLIC_PATH}/img/logos/nextjs.svg`,
   },
   nodejs: {
     name: "Node.js",
-    svg: "/img/logos/nodejs.svg",
+    svg: `${PUBLIC_PATH}/img/logos/nodejs.svg`,
   },
   pugjs: {
     name: "Pug.js",
-    svg: "/img/logos/pugjs.svg",
+    svg: `${PUBLIC_PATH}/img/logos/pugjs.svg`,
   },
   reactjs: {
     name: "React.js",
-    svg: "/img/logos/reactjs.svg",
+    svg: `${PUBLIC_PATH}/img/logos/reactjs.svg`,
   },
   s3: {
     name: "AWS S3",
-    svg: "/img/logos/s3.svg",
+    svg: `${PUBLIC_PATH}/img/logos/s3.svg`,
   },
   sass: {
     name: "SASS",
-    svg: "/img/logos/sass.svg",
+    svg: `${PUBLIC_PATH}/img/logos/sass.svg`,
   },
   stenciljs: {
     name: "Stencil.js",
-    svg: "/img/logos/stenciljs.svg",
+    svg: `${PUBLIC_PATH}/img/logos/stenciljs.svg`,
   },
   tailwindcss: {
     name: "Tailwind CSS",
-    svg: "/img/logos/tailwindcss.svg",
+    svg: `${PUBLIC_PATH}/img/logos/tailwindcss.svg`,
   },
   threejs: {
     name: "Three.js",
-    svg: "/img/logos/threejs.svg",
+    svg: `${PUBLIC_PATH}/img/logos/threejs.svg`,
   },
   tonejs: {
     name: "Tone.js",
-    svg: "/img/logos/tonejs.svg",
+    svg: `${PUBLIC_PATH}/img/logos/tonejs.svg`,
   },
   typescript: {
     name: "TypeScript",
-    svg: "/img/logos/typescript.svg",
+    svg: `${PUBLIC_PATH}/img/logos/typescript.svg`,
   },
   vitejs: {
     name: "Vite.js",
-    svg: "/img/logos/vitejs.svg",
+    svg: `${PUBLIC_PATH}/img/logos/vitejs.svg`,
   },
   vuejs: {
     name: "Vue.js",
-    svg: "/img/logos/vuejs.svg",
+    svg: `${PUBLIC_PATH}/img/logos/vuejs.svg`,
   },
   zoom: {
     name: "Zoom SDK",
-    svg: "/img/logos/zoom.svg",
+    svg: `${PUBLIC_PATH}/img/logos/zoom.svg`,
   },
 };
 
@@ -151,7 +151,7 @@ const contents = {
   sidebar: {
     profile: {
       title: "Juan Pablo Ciro",
-      img: "/img/profile.jpeg",
+      img: `${PUBLIC_PATH}/img/profile.jpeg`,
     },
     sections: [
       {
@@ -181,7 +181,7 @@ const contents = {
     subtitle: "Informatics and software engineer",
   },
   about: {
-    img: "/img/profile.jpeg",
+    img: `${PUBLIC_PATH}/img/profile.jpeg`,
     title: "Hi, I'm Juan Pablo Ciro",
     description: `I am a software engineer passionate about web UI programming. I have ${
       new Date().getFullYear() - 2020

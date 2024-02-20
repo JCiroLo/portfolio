@@ -13,8 +13,8 @@ const ProjectsSection = () => {
           <Typography>{contents.projects.description}</Typography>
         </Stack>
       </Slide>
-      {contents.projects.contents.map(({ category, description, name, website, repository, technologies }) => (
-        <Slide>
+      {contents.projects.contents.map(({ category, description, name, website, repository, technologies }, index) => (
+        <Slide key={index}>
           <Container maxWidth="xl">
             <Stack width={{ xs: "100%", md: "40%" }}>
               <Typography>{category}</Typography>

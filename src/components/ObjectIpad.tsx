@@ -10,6 +10,7 @@ import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { useEffect } from "react";
+import { PUBLIC_PATH } from "../utilities/constants";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -71,7 +72,7 @@ type ObjectIpadProps = JSX.IntrinsicElements["group"] & {
 };
 
 const ObjectIpad = (props: ObjectIpadProps) => {
-  const { nodes, materials } = useGLTF("/objects/ipad/scene.glb") as GLTFResult;
+  const { nodes, materials } = useGLTF(`${PUBLIC_PATH}/objects/ipad/scene.glb`) as GLTFResult;
 
   useEffect(() => {
     const customTexture = new THREE.TextureLoader().load(props.textureSrc);
@@ -137,6 +138,6 @@ const ObjectIpad = (props: ObjectIpadProps) => {
   );
 };
 
-useGLTF.preload("/objects/ipad/scene.glb");
+useGLTF.preload(`${PUBLIC_PATH}/objects/ipad/scene.glb`);
 
 export default ObjectIpad;

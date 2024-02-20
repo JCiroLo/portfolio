@@ -10,6 +10,7 @@ import * as THREE from "three";
 import { forwardRef, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import { PUBLIC_PATH } from "../utilities/constants";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -43,7 +44,7 @@ type GLTFResult = GLTF & {
 type ObjectPixelWorldProps = JSX.IntrinsicElements["group"] & { envMap: THREE.Texture };
 
 const ObjectPixelWorld = forwardRef<THREE.Group, ObjectPixelWorldProps>((props: ObjectPixelWorldProps, ref) => {
-  const { nodes, materials } = useGLTF("/objects/planet/scene.glb") as GLTFResult;
+  const { nodes, materials } = useGLTF(`${PUBLIC_PATH}/objects/planet/scene.glb`) as GLTFResult;
 
   useEffect(() => {
     [
@@ -96,6 +97,6 @@ const ObjectPixelWorld = forwardRef<THREE.Group, ObjectPixelWorldProps>((props: 
   );
 });
 
-useGLTF.preload("/objects/planet/scene.glb");
+useGLTF.preload(`${PUBLIC_PATH}/objects/planet/scene.glb`);
 
 export default ObjectPixelWorld;

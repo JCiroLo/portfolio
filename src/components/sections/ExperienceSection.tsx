@@ -13,8 +13,8 @@ const ExperienceSection = () => {
           <Typography>{contents.skills.description}</Typography>
         </Stack>
       </Slide>
-      {contents.skills.contents.map(({ company, role, responsabilities }) => (
-        <Slide>
+      {contents.skills.contents.map(({ company, role, responsabilities }, index) => (
+        <Slide key={index}>
           <Container maxWidth="md">
             <Typography>{role} at</Typography>
             <Typography position="relative" variant="h2" fontWeight={700}>
