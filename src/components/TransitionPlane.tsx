@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef } from "react";
-import { MathUtils, ShaderMaterial, Texture, Vector4 } from "three";
+import { ShaderMaterial, Texture, Vector4 } from "three";
 import { useFrame, extend, useThree } from "@react-three/fiber";
 import { easing } from "maath";
 import transitions from "../shaders/transitions";
@@ -72,7 +72,7 @@ const TransitionPlane: FC<TransitionPlaneProps> = ({ nextTexture }) => {
     materialRef.current.uniforms.resolution.value.y = viewport.height;
     materialRef.current.uniforms.resolution.value.z = a1;
     materialRef.current.uniforms.resolution.value.w = a2;
-  }, []);
+  }, [viewport.height, viewport.width]);
 
   return (
     <mesh>

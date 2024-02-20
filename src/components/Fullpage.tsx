@@ -4,7 +4,7 @@ import state from "../store";
 import { useSnapshot } from "valtio";
 
 type FullpageProps = {
-  children: ({ state, api }: { state: any; api: fullpageApi }) => JSX.Element;
+  children: ({ state, api }: { state: unknown; api: fullpageApi }) => JSX.Element;
   onChange: ({ from, to }: { from: Item; to: Item }) => void;
   onSlide: ({ from, to }: { section: Item; from: Item; to: Item }) => void;
   onLoad: ({ api }: { api: fullpageApi }) => void;

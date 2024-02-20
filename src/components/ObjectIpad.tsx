@@ -79,7 +79,7 @@ const ObjectIpad = (props: ObjectIpadProps) => {
     materials.screen.map = customTexture;
     materials.screen.metalness = 1;
     materials.screen.roughness = 0.25;
-  }, [props.textureSrc]);
+  }, [materials.screen, props.textureSrc]);
 
   useEffect(() => {
     Object.values(materials).forEach((material) => {

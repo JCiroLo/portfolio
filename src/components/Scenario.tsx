@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef } from "react";
-import { ACESFilmicToneMapping, Color, Fog, Group, PerspectiveCamera as THREEPerspectiveCamera, Texture } from "three";
+import { ACESFilmicToneMapping, Color, Fog, Group, PerspectiveCamera as THREEPerspectiveCamera, Texture, Vector2 } from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { PerspectiveCamera, useFBO } from "@react-three/drei";
 import { Bloom, ChromaticAberration, EffectComposer } from "@react-three/postprocessing";
@@ -135,7 +135,7 @@ const ScenarioWrapper: FC = () => {
 
     // Effects
     easing.damp(bloomEffect.current, "intensity", bloom.getIntensity(section), 0.25, delta * 2);
-    easing.damp2((chromaticAberrationEffect.current as any).offset, chromaticAberration.getOffset(section), 0.25, delta);
+    easing.damp2((chromaticAberrationEffect.current as { offset: Vector2 }).offset, chromaticAberration.getOffset(section), 0.25, delta);
 
     // Background Color
     easing.dampC(colorRef.current, section === "me" ? 0x000000 : 0x171720, 0.25, delta);
