@@ -13,6 +13,7 @@ const PROJECT_IMAGES = {
   finalflows: `${PUBLIC_PATH}/img/projects/finalflows.jpg`,
   financity: `${PUBLIC_PATH}/img/projects/financity.jpg`,
   fractalcanopy: `${PUBLIC_PATH}/img/projects/fractalcanopy.jpg`,
+  gallery: `${PUBLIC_PATH}/img/projects/gallery.jpg`,
   getapig: `${PUBLIC_PATH}/img/projects/getapig.jpg`,
   lolre: `${PUBLIC_PATH}/img/projects/lolre.jpg`,
   minaslaaurora: `${PUBLIC_PATH}/img/projects/minaslaaurora.jpg`,
@@ -439,6 +440,15 @@ const contents = {
         website: "https://jcirolo.github.io/lolre",
         repository: "https://github.com/JCiroLo/lolre",
         preview: PROJECT_IMAGES.lolre,
+      },
+      {
+        name: "Image Gallery",
+        description: "Modern image gallery with visual effects and animations. Uses Picsum random image API.",
+        category: "Personal project",
+        technologies: [LOGO_IMAGES.vuejs, LOGO_IMAGES.sass],
+        website: "https://gallery-delta-ten.vercel.app",
+        repository: "https://github.com/JCiroLo/gallery",
+        preview: PROJECT_IMAGES.gallery,
       },
       {
         name: "Drum Machine",
