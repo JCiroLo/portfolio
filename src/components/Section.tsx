@@ -2,13 +2,13 @@ import { Stack, StackProps } from "@mui/material";
 import React, { FC } from "react";
 import { Sections } from "../utilities/types";
 
-type SectionProps = {
+type SectionProps = StackProps & {
   children: React.ReactNode;
   dataSection: Sections;
   sx?: StackProps["sx"];
 };
 
-const Section: FC<SectionProps> = ({ children, dataSection, sx = {} }) => {
+const Section: FC<SectionProps> = ({ children, dataSection, sx = {}, ...props }) => {
   return (
     <Stack
       className="section"
@@ -22,6 +22,7 @@ const Section: FC<SectionProps> = ({ children, dataSection, sx = {} }) => {
         },
         ...sx,
       }}
+      {...props}
     >
       <Stack>{children}</Stack>
     </Stack>

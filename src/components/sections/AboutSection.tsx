@@ -18,7 +18,7 @@ const AboutSection = () => {
         <Typography position="relative" variant="h2" fontWeight={700}>
           {contents.about.title}
         </Typography>
-        <Typography>{contents.about.description}</Typography>
+        <Typography mb={12}>{contents.about.description}</Typography>
       </Container>
     </Section>
   );

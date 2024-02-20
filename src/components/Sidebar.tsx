@@ -33,13 +33,13 @@ const Sidebar: FC<SidebarProps> = ({ onChange }) => {
         spacing={1}
         borderRadius={4}
         sx={{
-          transition: (t) => t.transitions.create(["background-color"]),
+          // transition: (t) => t.transitions.create(["background-color"]),
           pointerEvents: "all",
           "&:hover": {
-            backgroundColor: (t) => t.palette.action.hover,
+            // backgroundColor: (t) => t.palette.action.hover,
           },
           "&.active": {
-            backgroundColor: (t) => t.palette.action.focus,
+            // backgroundColor: (t) => t.palette.action.focus,
           },
           "&:hover, &.active": {
             "& .aside-links": {

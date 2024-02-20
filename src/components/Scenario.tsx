@@ -17,8 +17,8 @@ const config = {
     getFov(section: Sections) {
       const options: Record<Sections, number> = {
         me: 120,
-        about: 75,
-        experience: 60,
+        about: 50,
+        experience: 75,
         projects: 45,
         contact: 45,
       };
@@ -28,8 +28,8 @@ const config = {
     getPosition(section: Sections) {
       const options: Record<Sections, [number, number, number]> = {
         me: [0, 0, 20],
-        about: [0, 0, 10],
-        experience: [0, 6, 10],
+        about: [0, 5.5, 10],
+        experience: [0, 0, 10],
         projects: [0, 0, 10],
         contact: [0, 0, 20],
       };
@@ -79,7 +79,7 @@ const config = {
 };
 
 const ScenarioWrapper: FC = () => {
-  const { section, slide } = useSnapshot(state);
+  const { section } = useSnapshot(state);
 
   const colorRef = useRef<Color>(null!);
   const fogRef = useRef<Fog>(null!);
@@ -141,7 +141,7 @@ const ScenarioWrapper: FC = () => {
     easing.dampC(colorRef.current, section === "me" ? 0x000000 : 0x171720, 0.25, delta);
 
     // Fog
-    easing.damp(fogRef.current, "far", section === "experience" && slide.experience > 0 ? 10 : 50, 0.25, delta);
+    easing.damp(fogRef.current, "far", section === "experience" ? 10 : 50, 0.1, delta);
 
     // Camera
     easing.damp(renderCamera.current, "fov", config.camera.getFov(section), 0.1, delta);

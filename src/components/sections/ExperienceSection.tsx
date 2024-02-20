@@ -5,13 +5,13 @@ import contents from "../../contents";
 const ExperienceSection = () => {
   return (
     <Section dataSection="experience">
-      <Slide>
-        <Stack alignItems="center">
-          <Typography position="relative" variant="h2" fontWeight={700}>
-            {contents.skills.title}
-          </Typography>
-          <Typography>{contents.skills.description}</Typography>
-        </Stack>
+      <Slide alignItems="center">
+        <Typography position="relative" variant="h2" fontWeight={700} textAlign="center">
+          {contents.skills.title}
+        </Typography>
+        <Typography textAlign="center" sx={{ textWrap: "balance" }}>
+          {contents.skills.description}
+        </Typography>
       </Slide>
       {contents.skills.contents.map(({ company, role, responsabilities }, index) => (
         <Slide key={index}>

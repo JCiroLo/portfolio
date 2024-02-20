@@ -37,21 +37,24 @@ function App() {
   };
 
   return (
-    <Suspense fallback={<Loader />}>
-      <Scenario />
-      <Sidebar onChange={handleSidebarSectionChange} />
-      <Fullpage onChange={handleSectionChange} onSlide={handleSlideChange} onLoad={handleLoadFullpage}>
-        {() => (
-          <>
-            <MeSection />
-            <AboutSection />
-            <ExperienceSection />
-            <ProjectsSection />
-            <ContactSection />
-          </>
-        )}
-      </Fullpage>
-    </Suspense>
+    <>
+      <Loader autoHide />
+      <Suspense>
+        <Scenario />
+        <Sidebar onChange={handleSidebarSectionChange} />
+        <Fullpage onChange={handleSectionChange} onSlide={handleSlideChange} onLoad={handleLoadFullpage}>
+          {() => (
+            <>
+              <MeSection />
+              <AboutSection />
+              <ExperienceSection />
+              <ProjectsSection />
+              <ContactSection />
+            </>
+          )}
+        </Fullpage>
+      </Suspense>
+    </>
   );
 }
 

@@ -1,11 +1,11 @@
-import { Stack } from "@mui/material";
+import { Stack, StackProps } from "@mui/material";
 import React, { FC } from "react";
 
-type SlideProps = {
+type SlideProps = StackProps & {
   children: React.ReactNode;
 };
 
-const Slide: FC<SlideProps> = ({ children }) => {
+const Slide: FC<SlideProps> = ({ children, ...props }) => {
   return (
     <Stack
       className="slide"
@@ -16,6 +16,7 @@ const Slide: FC<SlideProps> = ({ children }) => {
           display: "none",
         },
       }}
+      {...props}
     >
       {children}
     </Stack>
