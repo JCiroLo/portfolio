@@ -1,5 +1,15 @@
 import { Suspense, useRef } from "react";
-import { AboutSection, ContactSection, ExperienceSection, Fullpage, MeSection, ProjectsSection, Scenario, Sidebar } from "./components";
+import {
+  AboutSection,
+  ContactSection,
+  ExperienceSection,
+  Fullpage,
+  Loader,
+  MeSection,
+  ProjectsSection,
+  Scenario,
+  Sidebar,
+} from "./components";
 import state, { type State } from "./store";
 import { SECTIONS } from "./utilities/constants";
 import { fullpageApi, type Item } from "@fullpage/react-fullpage";
@@ -27,7 +37,7 @@ function App() {
   };
 
   return (
-    <Suspense>
+    <Suspense fallback={<Loader />}>
       <Scenario />
       <Sidebar onChange={handleSidebarSectionChange} />
       <Fullpage onChange={handleSectionChange} onSlide={handleSlideChange} onLoad={handleLoadFullpage}>
