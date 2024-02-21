@@ -503,18 +503,22 @@ const contents = {
   },
   social: [
     {
+      name: "Email",
       url: "mailto: juanciro35@gmail.com",
       icon: MailIcon,
     },
     {
+      name: "LinkedIn",
       url: "https://www.linkedin.com/in/jcirolo",
       icon: LinkedInIcon,
     },
     {
+      name: "GitHub",
       url: "https://github.com/JCiroLo",
       icon: GithubIcon,
     },
     {
+      name: "Instagram",
       url: "https://www.instagram.com/justanotherzero.jpg",
       icon: InstagramIcon,
     },

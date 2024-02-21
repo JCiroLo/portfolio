@@ -19,7 +19,7 @@ export const generateTheme = (mode: modes) =>
       },
     },
     shadows: ["none", ...shadows] as Shadows,
-    shape: { borderRadius: 12 },
+    shape: { borderRadius: 8 },
     breakpoints: {
       values: {
         xs: 0,

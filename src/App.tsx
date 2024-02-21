@@ -38,8 +38,7 @@ function App() {
 
   return (
     <>
-      <Loader autoHide />
-      <Suspense>
+      <Suspense fallback={<Loader />}>
         <Scenario />
         <Sidebar onChange={handleSidebarSectionChange} />
         <Fullpage onChange={handleSectionChange} onSlide={handleSlideChange} onLoad={handleLoadFullpage}>

@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { Section } from "..";
+import { Scroller, Section } from "..";
 import contents from "../../contents";
 
 const MeSection = () => {
@@ -11,6 +11,7 @@ const MeSection = () => {
       <Typography fontWeight={300} textAlign="center">
         {contents.me.subtitle}
       </Typography>
+      <Scroller />
     </Section>
   );
 };

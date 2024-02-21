@@ -6,6 +6,7 @@ export { default as Loader } from './Loader';
 export { default as ObjectIpad } from './ObjectIpad';
 export { default as ObjectPixelWorld } from './ObjectPixelWorld';
 export { default as Scenario } from './Scenario';
+export { default as Scroller } from './Scroller';
 export { default as Section } from './Section';
 export { default as Sidebar } from './Sidebar';
 export { default as Slide } from './Slide';

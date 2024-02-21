@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Box, Link, List, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
+import { Box, Link, List, ListItem, ListItemButton, ListItemText, Stack, Tooltip } from "@mui/material";
 import { useSnapshot } from "valtio";
 import state from "../store";
 import { Image } from ".";
@@ -30,20 +30,13 @@ const Sidebar: FC<SidebarProps> = ({ onChange }) => {
         className={active === "me" ? "active" : ""}
         alignSelf="flex-start"
         alignItems="center"
-        spacing={1}
+        spacing={2}
         borderRadius={4}
         sx={{
-          // transition: (t) => t.transitions.create(["background-color"]),
           pointerEvents: "all",
-          "&:hover": {
-            // backgroundColor: (t) => t.palette.action.hover,
-          },
-          "&.active": {
-            // backgroundColor: (t) => t.palette.action.focus,
-          },
           "&:hover, &.active": {
             "& .aside-links": {
-              height: 147,
+              height: 160,
             },
           },
         }}
@@ -55,21 +48,26 @@ const Sidebar: FC<SidebarProps> = ({ onChange }) => {
           height={6}
           style={{ objectFit: "cover", borderRadius: "50%" }}
         />
-        <Stack
-          className="aside-links"
-          spacing={1}
-          sx={{ height: 0, overflow: "hidden", transition: (t) => t.transitions.create(["height"]) }}
-        >
+        <Stack className="aside-links" sx={{ height: 0, overflow: "hidden", transition: (t) => t.transitions.create(["height"]) }}>
           {contents.social.map((social, index) => (
-            <Link
-              key={index}
-              href={social.url}
-              color="inherit"
-              target="_blank"
-              sx={{ transition: (t) => t.transitions.create(["transform"]), "&:hover": { transform: "scale(1.2)" } }}
-            >
-              {<social.icon />}
-            </Link>
+            <Tooltip arrow key={index} title={social.name} placement="right">
+              <Link
+                key={index}
+                href={social.url}
+                color="inherit"
+                target="_blank"
+                padding={1}
+                sx={{
+                  display: "flex",
+                  lineHeight: 1,
+                  "&:hover svg": {
+                    transform: "scale(1.2)",
+                  },
+                }}
+              >
+                {<social.icon sx={{ transition: (t) => t.transitions.create(["transform"]) }} />}
+              </Link>
+            </Tooltip>
           ))}
         </Stack>
       </Stack>
@@ -85,7 +83,7 @@ const Sidebar: FC<SidebarProps> = ({ onChange }) => {
                   gap: 1,
                   paddingY: 0,
                   paddingX: 1,
-                  borderRadius: 2,
+                  borderRadius: 1,
                   opacity: isActive ? 1 : 0.25,
                   transition: (t) => t.transitions.create(["opacity"]),
                 }}
