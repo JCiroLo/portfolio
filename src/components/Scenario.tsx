@@ -1,9 +1,8 @@
 import { FC, useEffect, useRef } from "react";
-import { ACESFilmicToneMapping, Color, Fog, Group, PerspectiveCamera as THREEPerspectiveCamera, Texture, Vector2 } from "three";
+import { Color, Fog, Group, PerspectiveCamera as THREEPerspectiveCamera, Texture, Vector2 } from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { PerspectiveCamera, useFBO } from "@react-three/drei";
 import { Bloom, ChromaticAberration, EffectComposer } from "@react-three/postprocessing";
-import { Stack } from "@mui/material";
 import { useSnapshot } from "valtio";
 import { easing } from "maath";
 import { AboutScene, CameraRig, MeScene, ProjectsScene, TransitionPlane } from ".";
@@ -185,18 +184,18 @@ const ScenarioWrapper: FC = () => {
 
 const Scenario: FC = () => {
   return (
-    <Stack position="fixed" sx={{ inset: 0 }}>
+    <div style={{ position: "fixed", inset: 0 }}>
       <Canvas
-        gl={{
-          toneMapping: ACESFilmicToneMapping,
-          toneMappingExposure: 3.4,
-        }}
+        // gl={{
+        //   toneMapping: ACESFilmicToneMapping,
+        //   toneMappingExposure: 3.4,
+        // }}
         eventSource={document.getElementById("root")!}
         eventPrefix="client"
       >
         <ScenarioWrapper />
       </Canvas>
-    </Stack>
+    </div>
   );
 };
 

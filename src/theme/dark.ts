@@ -9,7 +9,7 @@ const darkMode: PaletteOptions = {
     main: "#646470",
   },
   background: {
-    default: "#171720",
+    default: "#000000",
     paper: "#17172044",
   },
   text: {

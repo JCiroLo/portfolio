@@ -1,5 +1,12 @@
 import { FC } from "react";
-import { Box, Link, List, ListItem, ListItemButton, ListItemText, Stack, Tooltip } from "@mui/material";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Stack from "@mui/material/Stack";
+import Tooltip from "@mui/material/Tooltip";
 import { useSnapshot } from "valtio";
 import state from "../store";
 import { Image } from ".";
@@ -11,7 +18,7 @@ type SidebarProps = {
 };
 
 const Sidebar: FC<SidebarProps> = ({ onChange }) => {
-  const { section: active } = useSnapshot(state);
+  const { section: active, slide } = useSnapshot(state);
 
   return (
     <Stack
@@ -24,7 +31,13 @@ const Sidebar: FC<SidebarProps> = ({ onChange }) => {
       spacing={2}
       justifyContent="space-between"
       padding={2}
-      sx={{ pointerEvents: "none" }}
+      sx={{
+        pointerEvents: "none",
+        opacity: 0,
+        ...((active === "experience" || active === "projects") && (slide.experience > 0 || slide.projects > 0)
+          ? {}
+          : { animation: "fade 1s ease forwards 1s" }),
+      }}
     >
       <Stack
         className={active === "me" ? "active" : ""}
@@ -46,7 +59,8 @@ const Sidebar: FC<SidebarProps> = ({ onChange }) => {
           alt="Profile image"
           width={6}
           height={6}
-          style={{ objectFit: "cover", borderRadius: "50%" }}
+          borderRadius="50%"
+          style={{ objectFit: "cover" }}
         />
         <Stack className="aside-links" sx={{ height: 0, overflow: "hidden", transition: (t) => t.transitions.create(["height"]) }}>
           {contents.social.map((social, index) => (

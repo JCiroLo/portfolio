@@ -8,14 +8,17 @@ import {
   MeSection,
   ProjectsSection,
   Scenario,
+  ScenarioMobile,
   Sidebar,
 } from "./components";
 import state, { type State } from "./store";
 import { SECTIONS } from "./utilities/constants";
 import { fullpageApi, type Item } from "@fullpage/react-fullpage";
 import { Sections } from "./utilities/types";
+import { useDeviceDetection } from "./hooks";
 
 function App() {
+  const device = useDeviceDetection();
   const apiRef = useRef<fullpageApi>();
 
   const handleLoadFullpage = ({ api }: { api: fullpageApi }) => {
@@ -38,21 +41,19 @@ function App() {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <Scenario />
-        <Sidebar onChange={handleSidebarSectionChange} />
-        <Fullpage onChange={handleSectionChange} onSlide={handleSlideChange} onLoad={handleLoadFullpage}>
-          {() => (
-            <>
-              <MeSection />
-              <AboutSection />
-              <ExperienceSection />
-              <ProjectsSection />
-              <ContactSection />
-            </>
-          )}
-        </Fullpage>
-      </Suspense>
+      <Suspense fallback={<Loader />}>{device === "Desktop" ? <Scenario /> : <ScenarioMobile />}</Suspense>
+      <Sidebar onChange={handleSidebarSectionChange} />
+      <Fullpage onChange={handleSectionChange} onSlide={handleSlideChange} onLoad={handleLoadFullpage}>
+        {() => (
+          <>
+            <MeSection />
+            <AboutSection />
+            <ExperienceSection />
+            <ProjectsSection />
+            <ContactSection />
+          </>
+        )}
+      </Fullpage>
     </>
   );
 }

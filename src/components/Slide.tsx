@@ -1,5 +1,6 @@
-import { Stack, StackProps } from "@mui/material";
 import React, { FC } from "react";
+import Stack from "@mui/material/Stack";
+import { type StackProps } from "@mui/material/Stack";
 
 type SlideProps = StackProps & {
   children: React.ReactNode;

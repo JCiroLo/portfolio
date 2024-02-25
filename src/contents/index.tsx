@@ -20,7 +20,9 @@ const PROJECT_IMAGES = {
   mitox: `${PUBLIC_PATH}/img/projects/mitox.jpg`,
   musicalscalefinder: `${PUBLIC_PATH}/img/projects/musicalscalefinder.jpg`,
   porimpacto: `${PUBLIC_PATH}/img/projects/porimpacto.jpg`,
+  rutas: `${PUBLIC_PATH}/img/projects/rutas.jpg`,
   snakegame: `${PUBLIC_PATH}/img/projects/snakegame.jpg`,
+  stepps: `${PUBLIC_PATH}/img/projects/stepps.jpg`,
   tradesforce: `${PUBLIC_PATH}/img/projects/tradesforce.jpg`,
   validocus: `${PUBLIC_PATH}/img/projects/validocus.jpg`,
 };
@@ -105,6 +107,10 @@ const LOGO_IMAGES = {
   reactjs: {
     name: "React.js",
     svg: `${PUBLIC_PATH}/img/logos/reactjs.svg`,
+  },
+  reactnative: {
+    name: "React Native",
+    svg: `${PUBLIC_PATH}/img/logos/reactnative.svg`,
   },
   s3: {
     name: "AWS S3",
@@ -268,8 +274,30 @@ const contents = {
   },
   projects: {
     title: "Projects",
-    description: "Scroll right to see my previous projects",
+    description: "Here are some of the projects I have worked on",
     contents: [
+      {
+        name: "Stepps",
+        description:
+          "It is a mobile application to learn about self-care and stress management by watching short videos, creating step-by-step plans to do, and purchasing products.",
+        category: "Star Solutions",
+        technologies: [LOGO_IMAGES.flutter, LOGO_IMAGES.firebase],
+        website: null,
+        repository: null,
+        preview: PROJECT_IMAGES.stepps,
+        isMobile: true,
+      },
+      {
+        name: "RutasL105",
+        description:
+          "It is a mobile application from Perú. The main objective is to help product delivery companies to manage their routes, schedules and products in real time, usign Google Maps. ",
+        category: "Star Solutions",
+        technologies: [LOGO_IMAGES.reactnative, LOGO_IMAGES.expo, LOGO_IMAGES.firebase],
+        website: null,
+        repository: null,
+        preview: PROJECT_IMAGES.rutas,
+        isMobile: true,
+      },
       {
         name: "Artfcl",
         description:
@@ -286,6 +314,7 @@ const contents = {
         website: "https://artfcl.ai",
         repository: null,
         preview: PROJECT_IMAGES.artfcl,
+        isMobile: false,
       },
       {
         name: "Avovite",
@@ -296,6 +325,7 @@ const contents = {
         website: "https://avovite.com",
         repository: null,
         preview: PROJECT_IMAGES.avovite,
+        isMobile: false,
       },
       {
         name: "Bitnapse",
@@ -306,6 +336,7 @@ const contents = {
         website: "https://bitnapse.au",
         repository: null,
         preview: PROJECT_IMAGES.bitnapse,
+        isMobile: false,
       },
       {
         name: "Tradesfoce",
@@ -316,6 +347,7 @@ const contents = {
         website: "https://tradesforce.conciblot.com",
         repository: null,
         preview: PROJECT_IMAGES.tradesforce,
+        isMobile: false,
       },
       {
         name: "Validocus",
@@ -326,6 +358,7 @@ const contents = {
         website: "https://validocus.com",
         repository: null,
         preview: PROJECT_IMAGES.validocus,
+        isMobile: false,
       },
       {
         name: "Doogma",
@@ -336,6 +369,7 @@ const contents = {
         website: "https://doogma-builder-three.vercel.app",
         repository: null,
         preview: PROJECT_IMAGES.doogma,
+        isMobile: false,
       },
       {
         name: "FinalFlows",
@@ -346,6 +380,7 @@ const contents = {
         website: null,
         repository: null,
         preview: PROJECT_IMAGES.finalflows,
+        isMobile: false,
       },
       {
         name: "Financity",
@@ -356,6 +391,7 @@ const contents = {
         website: "https://financity.city",
         repository: null,
         preview: PROJECT_IMAGES.financity,
+        isMobile: false,
       },
       {
         name: "Mitox",
@@ -366,6 +402,7 @@ const contents = {
         website: "https://mitox.com.co",
         repository: null,
         preview: PROJECT_IMAGES.mitox,
+        isMobile: false,
       },
       {
         name: "Por Impacto",
@@ -376,6 +413,7 @@ const contents = {
         website: "https://porimpacto.org",
         repository: null,
         preview: PROJECT_IMAGES.porimpacto,
+        isMobile: false,
       },
       {
         name: "Minas la Aurora",
@@ -386,6 +424,7 @@ const contents = {
         website: "https://www.minaslaaurora.com/es/",
         repository: null,
         preview: PROJECT_IMAGES.minaslaaurora,
+        isMobile: false,
       },
       {
         name: "Getapig",
@@ -403,6 +442,7 @@ const contents = {
         website: "https://getapig.co",
         repository: null,
         preview: PROJECT_IMAGES.getapig,
+        isMobile: false,
       },
       {
         name: "Cupido Car Wash",
@@ -412,6 +452,7 @@ const contents = {
         website: "https://cupidowash.com",
         repository: null,
         preview: PROJECT_IMAGES.cupidocarwash,
+        isMobile: false,
       },
       {
         name: "Musical Scale Finder",
@@ -421,6 +462,7 @@ const contents = {
         website: "https://jcirolo.github.io/musical-scale-finder",
         repository: "https://github.com/JCiroLo/musical-scale-finder",
         preview: PROJECT_IMAGES.musicalscalefinder,
+        isMobile: false,
       },
       {
         name: "Fractal Canopy",
@@ -430,6 +472,7 @@ const contents = {
         website: "https://jcirolo.github.io/fractal-canopy",
         repository: "https://github.com/JCiroLo/fractal-canopy",
         preview: PROJECT_IMAGES.fractalcanopy,
+        isMobile: false,
       },
       {
         name: "Lolre",
@@ -440,6 +483,7 @@ const contents = {
         website: "https://jcirolo.github.io/lolre",
         repository: "https://github.com/JCiroLo/lolre",
         preview: PROJECT_IMAGES.lolre,
+        isMobile: false,
       },
       {
         name: "Image Gallery",
@@ -449,6 +493,7 @@ const contents = {
         website: "https://gallery-delta-ten.vercel.app",
         repository: "https://github.com/JCiroLo/gallery",
         preview: PROJECT_IMAGES.gallery,
+        isMobile: false,
       },
       {
         name: "Drum Machine",
@@ -458,6 +503,7 @@ const contents = {
         website: "https://jcirolo.github.io/drum-machine",
         repository: "https://github.com/JCiroLo/drum-machine",
         preview: PROJECT_IMAGES.drummachine,
+        isMobile: false,
       },
       {
         name: "Snake Game",
@@ -467,6 +513,7 @@ const contents = {
         website: "https://jcirolo.github.io/snake-game",
         repository: "https://github.com/JCiroLo/snake-game",
         preview: PROJECT_IMAGES.snakegame,
+        isMobile: false,
       },
       {
         name: "Ascii Camera",
@@ -476,6 +523,7 @@ const contents = {
         website: "https://jcirolo.github.io/camera-effects",
         repository: "https://github.com/JCiroLo/camera-effects",
         preview: PROJECT_IMAGES.cameraeffects,
+        isMobile: false,
       },
       {
         name: "Disco Planet",
@@ -485,6 +533,7 @@ const contents = {
         website: "https://jcirolo.github.io/disco-planet",
         repository: "https://github.com/JCiroLo/disco-planet",
         preview: PROJECT_IMAGES.discoplanet,
+        isMobile: false,
       },
       // {
       //   name: "Glasses Frame Shop",

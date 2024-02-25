@@ -1,4 +1,6 @@
-import { Link, Stack, Typography } from "@mui/material";
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import { Section, Slide } from "..";
 import contents from "../../contents";
 
@@ -10,7 +12,9 @@ const Contact = () => {
           <Typography position="relative" variant="h2" fontWeight={700}>
             {contents.contact.title}
           </Typography>
-          <Typography>{contents.contact.description}</Typography>
+          <Typography textAlign="center" sx={{ textWrap: "balance" }}>
+            {contents.contact.description}
+          </Typography>
           <br />
           <Stack direction="row" spacing={2}>
             {contents.social.map((social, index) => (

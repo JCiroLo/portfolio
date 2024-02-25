@@ -13,6 +13,7 @@ const transitionShader = {
     progress: { value: 0 },
     time: { value: 0 },
     resolution: { value: new Vector4() },
+    intensity: { value: 50 },
   },
   vertexShader: `
     varying vec2 vUv;
