@@ -1,6 +1,6 @@
 import { type Sections } from "./types";
 
-export const PUBLIC_PATH = "/portfolio";
+export const PUBLIC_PATH = "";
 
 export const SECTIONS: Record<number, Sections> = {
   0: "me",
